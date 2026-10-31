@@ -10,6 +10,23 @@ haqiqiy ma'lumotlar bazasidan olinadi — soxta raqamlar yo'q.
 > CC BY 3.0 litsenziyali "Big Buck Bunny" qisqa filmi. To'liq mualliflik
 > huquqiga ega filmlar yoki dublyajlar qo'shilmagan.
 
+## Jonli deploy holati (2026-10-31)
+
+- Frontend: <https://obidov1410.github.io/Kinora/> — GitHub Pages, `pages.yml`
+  Actions workflow orqali deploy qilinadi.
+- Backend: <https://kinora-api-k3c6.onrender.com> — Render, Frankfurt,
+  **Free** instance (persistent disk yo'q).
+- Tekshirilgan: `/api/health` → `"status": "ok"`, live sayt Render API'dan
+  demo katalogni oladi, poster/backdrop fayllari 200 qaytaradi, console'da JS
+  xatosi yo'q.
+- Hali yoqilmagan: serverga `BOT_TOKEN` kiritilmagan (`telegram_configured:
+  false`), shu sabab Telegram login va admin panel ishlamaydi. BotFather'dagi
+  Menu Button ham hali sozlanmagan. Buni yoqish uchun quyidagi
+  [Telegram Mini App](#telegram-mini-app-botfather) bo'limiga qarang.
+- Free instance 15 daqiqa harakatsizlikdan keyin uxlaydi (birinchi so'rov
+  ~50 soniya) va diskni saqlamaydi: redeploy/restartda SQLite bazasi va
+  yuklamalar demo holatiga qaytadi. Doimiy ma'lumot uchun Starter + disk.
+
 ## Nima ishlaydi
 
 - Landing: kinematik kolaj, til tanlash, Telegram orqali kirish.
@@ -36,7 +53,8 @@ tasdiqlangan webhook yoki audit qilinadigan admin granti bilan beriladi.
 
 - Backend: Python 3.12, FastAPI, SQLAlchemy 2, SQLite (WAL), Pydantic v2, PyJWT.
 - Frontend: sof HTML/CSS/JavaScript ES modullari (build talab qilinmaydi).
-- Deploy: Render (backend + persistent disk), GitHub Pages (frontend).
+- Deploy: Render (backend; hozir Free, persistent disk ixtiyoriy), GitHub Pages
+  (frontend).
 
 ## Lokal ishga tushirish (Windows)
 
@@ -89,12 +107,12 @@ Testlar:
    ```
 
 3. Repozitoriy → **Settings → Pages → Build and deployment → Source:
-   GitHub Actions**.
+   GitHub Actions** (hozir shunday sozlangan).
 4. Repozitoriy → **Settings → Secrets and variables → Actions → Variables →
    New repository variable**:
    - nomi: `KINORA_API_BASE_URL`
-   - qiymati: Render'dan olingan manzil, masalan
-     `https://kinora-api.onrender.com` (oxirida `/` bo'lmasin).
+   - qiymati: Render'dan olingan manzil, hozir
+     `https://kinora-api-k3c6.onrender.com` (oxirida `/` bo'lmasin).
    Workflow shu qiymatni `frontend/config.js` dagi
    `https://YOUR-RENDER-SERVICE.onrender.com` placeholder'iga almashtiradi.
    Alternativa: `frontend/config.js` faylidagi shu qatorni qo'lda tahrirlang.
@@ -107,7 +125,28 @@ GitHub Pages → Run workflow** orqali qayta ishga tushiring.
 
 ## Deploy: Render (backend)
 
-### Variant A — Blueprint (tavsiya)
+### Hozirgi servis (2026-10-31)
+
+- Nom: `kinora-api`, region Frankfurt, instance **Free**.
+- URL: <https://kinora-api-k3c6.onrender.com>
+- Service ID: `srv-dbj2dbk9v7es738umnb0`.
+- Build: `pip install -r backend/requirements.txt`; start:
+  `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`.
+- Kiritilgan env: `ENV=production`, `SECRET_KEY` (Render generate),
+  `BOT_USERNAME`, `OWNER_ID`, `CORS_ORIGINS`, `FRONTEND_URL`, rate limit,
+  sessiya/media TTL, `SEED_DEMO=true`, `PAYMENT_PROVIDER=none`.
+- **Yetishmayotgan yagona muhim env — `BOT_TOKEN`.** Uni faqat Render
+  dashboard orqali kiriting: service → **Environment → Add Environment
+  Variable** → key `BOT_TOKEN`, value BotFather'dan olingan token → **Save**.
+  Redeploy tugagach `/api/health` da `"telegram_configured": true` bo'ladi.
+- Free instance diskni saqlamaydi. Doimiy baza va yuklamalar uchun
+  **Settings → Instance** orqali Starter'ga o'ting, `/var/data` disk qo'shing
+  va `DATABASE_URL=sqlite:////var/data/kinora.db`, `DATA_DIR=/var/data`,
+  `UPLOADS_DIR=/var/data/uploads`, `BACKUPS_DIR=/var/data/backups` env'larini
+  kiriting. Hozirgi bepul bazadagi ma'lumotlar bunday o'tishda ko'chmaydi —
+  kerak bo'lsa avval admin panel orqali zaxira nusxa yuklab oling.
+
+### Variant A — Blueprint (yangi, to'lovli instance uchun)
 
 1. Repozitoriyni Render'ga ulang.
 2. **New → Blueprint**, `obidov1410/Kinora` repozitoriysini tanlang.
@@ -119,6 +158,11 @@ GitHub Pages → Run workflow** orqali qayta ishga tushiring.
    `https://kinora-api.onrender.com`).
 
 ### Variant B — qo'lda
+
+> Hozirgi bepul servis quyidagi jadvaldan faqat disk bilan bog'liq
+> (`DATABASE_URL`, `DATA_DIR`, `UPLOADS_DIR`, `BACKUPS_DIR`) qatorlarni
+> kiritmagan — baza `backend/data/` ichida, ya'ni ephemeral. Qolgan qiymatlar
+> bir xil.
 
 - Runtime: Python 3.12
 - Build: `pip install -r backend/requirements.txt`
@@ -235,11 +279,14 @@ avtomatik autentifikatsiya) yoki lokalda `http://127.0.0.1:5500/admin.html`
 - Render free plan diskni qo'llab-quvvatlamaydi; persistent disk uchun Starter.
 - GitHub Pages statik; API manzili `KINORA_API_BASE_URL` yoki `config.js`
   orqali berilishi shart.
-- Ushbu sessiyada GitHub, Render va BotFather'ga haqiqiy deploy qilinmadi —
-  buning uchun sizning hisobingiz va tokenlaringiz kerak. Quyida faqat lokal
-  test natijalari keltirilgan.
+- GitHub Pages va Render (Free) deploy qilindi va live tekshirildi. Telegram
+  login/admin uchun `BOT_TOKEN` hali serverga kiritilmagan; BotFather Menu
+  Button ham egasi tomonidan sozlanishi kerak. Bularni qo'shmasdan turib
+  autentifikatsiya, sevimlilar, profil va admin panel ishlamaydi.
+- Render Free instance uxlaydi va diskni saqlamaydi; doimiy ma'lumot uchun
+  Starter + disk kerak (yuqoridagi Render bo'limiga qarang).
 
-## Test natijalari (2026-10-31, lokal)
+## Test natijalari (2026-10-31, lokal va live)
 
 - `pytest`: **28 passed** (bitta Starlette/httpx deprecation warning).
 - Qo'lda UI (Chromium, localhost): landing, bosh sahifa qatorlari, instant
@@ -250,6 +297,11 @@ avtomatik autentifikatsiya) yoki lokalda `http://127.0.0.1:5500/admin.html`
   sozlamalar, zaxira yaratish → yuklab olish → RESTORE tiklash.
 - Console'da JS xatolari yo'q (faqat Telegram SDK'ning brauzerdagi zararsiz
   ogohlantirishlari).
+- Live (2026-10-31): `https://kinora-api-k3c6.onrender.com/api/health` →
+  `status: ok`, `database: ok`; `/api/config` va `/api/catalog` real demo
+  ma'lumot qaytardi. `https://obidov1410.github.io/Kinora/`, `browse.html`,
+  `detail.html?slug=kosmos-2049` 200; API so'rovlari CORS bilan muvaffaqiyatli,
+  posterlar yuklandi. `telegram_configured: false` — BOT_TOKEN kutilmoqda.
 
 ## API
 
