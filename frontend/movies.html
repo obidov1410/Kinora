@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="uz-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KINORA — Filmlar</title>
+  <meta name="description" content="Kinora filmlar katalogi. Janr bo'yicha filtrlang, yangi va ommabop filmlarni toping.">
+  <meta name="theme-color" content="#08080b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="catalog-page" data-kind="movie">
+  <div id="site-header"></div>
+
+  <main class="page-main">
+    <div class="browse-content">
+      <header class="catalog-hero">
+        <p class="section-heading__eyebrow">KATALOG</p>
+        <h1 class="section-heading__title" data-i18n="nav_movies">Filmlar</h1>
+        <p class="section-heading__sub" data-i18n="movies_sub">Kinora katalogidagi tasdiqlangan filmlar. Janr bo'yicha filtrlang.</p>
+      </header>
+
+      <div id="catalog-ad"></div>
+
+      <div class="filter-bar">
+        <div class="filter-bar__chips" id="genre-chips" aria-label="Janrlar"></div>
+        <label class="sort-control">
+          <span data-i18n="sort">Tartiblash</span>
+          <select class="lang-select" id="sort-select">
+            <option value="newest" data-i18n="sort_newest">Yangi qo'shilganlar</option>
+            <option value="popular" data-i18n="sort_popular">Ommabop</option>
+            <option value="year" data-i18n="sort_year">Yil bo'yicha</option>
+            <option value="title" data-i18n="sort_title">Alifbo bo'yicha</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="result-line" id="result-line" aria-live="polite"></div>
+      <div id="catalog-grid"></div>
+      <div class="load-more-wrap" id="more-wrap" hidden>
+        <button class="btn btn--outline" type="button" id="load-more">
+          <span data-i18n="load_more">Ko'proq yuklash</span>
+        </button>
+      </div>
+
+      <div class="demo-strip">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></span>
+        <span data-i18n="demo_notice">Belgilangan yozuvlar demo ma'lumotlardir. Posterlar original generatsiya qilingan vizuallar, video va treylerlar esa faqat litsenziyalangan manbalardan qo'shiladi.</span>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script type="module" src="catalog.js"></script>
+</body>
+</html>

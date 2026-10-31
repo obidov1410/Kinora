@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="uz-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KINORA — Bosh sahifa</title>
+  <meta name="description" content="Kinora katalogi: yangi va ommabop filmlar, seriallar, janrlar bo'yicha tanlov. Telegram orqali sevimlilarga saqlang.">
+  <meta name="theme-color" content="#08080b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="browse-body">
+  <div id="site-header"></div>
+
+  <main class="page-main">
+    <div id="browse-home">
+      <section class="home-hero" id="home-hero" aria-label="Tanlangan kontent">
+        <div class="home-hero__media" id="hero-media">
+          <img src="assets/backdrops/nur.webp" alt="" loading="eager">
+        </div>
+        <div class="home-hero__content">
+          <div class="home-hero__inner" id="hero-content">
+            <span class="hero-kicker">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c.6 4.9 2.2 6.9 6.9 7.5-4.7.6-6.3 2.6-6.9 7.5-.6-4.9-2.2-6.9-6.9-7.5 4.7-.6 6.3-2.6 6.9-7.5Z"/></svg></span>
+              <span data-i18n="loading">Yuklanmoqda...</span>
+            </span>
+            <h1 class="hero-title">KINORA</h1>
+            <p class="hero-desc" data-i18n="loading_catalog">Katalog yuklanmoqda...</p>
+          </div>
+        </div>
+        <div class="hero-controls" id="hero-controls" hidden>
+          <div class="hero-dots" id="hero-dots"></div>
+          <button class="hero-arrow" type="button" id="hero-prev" aria-label="Oldingi">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 5-7 7 7 7"/></svg></span>
+          </button>
+          <button class="hero-arrow" type="button" id="hero-next" aria-label="Keyingi">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 5 7 7-7 7"/></svg></span>
+          </button>
+        </div>
+      </section>
+
+      <div class="browse-content browse-content--overlap">
+        <div id="browse-rows"></div>
+      </div>
+    </div>
+
+    <div class="browse-content" id="browse-search" hidden>
+      <header class="catalog-hero">
+        <p class="section-heading__eyebrow" data-i18n="search">Qidirish</p>
+        <h1 class="section-heading__title" id="search-title">Qidiruv natijalari</h1>
+        <p class="section-heading__sub" id="search-sub"></p>
+      </header>
+      <div class="result-line" id="search-count"></div>
+      <div id="search-results" aria-live="polite"></div>
+      <div class="load-more-wrap" id="search-more-wrap" hidden>
+        <button class="btn btn--outline" type="button" id="search-more" data-i18n="load_more">Ko'proq yuklash</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script type="module" src="browse.js"></script>
+</body>
+</html>

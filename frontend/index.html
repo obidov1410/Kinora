@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="uz-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KINORA — O'zbekcha film va seriallar katalogi</title>
+  <meta name="description" content="KINORA — o'zbek tomoshabinlari uchun film va seriallar katalogi. Telegram orqali xavfsiz kirish, lotin va kirill interfeysi, sevimlilar va shaxsiy profil.">
+  <meta property="og:title" content="KINORA — Cheksiz kinolar. Bir joyda.">
+  <meta property="og:description" content="Filmlar, seriallar va yangi premyeralar. Lotin va kirill alifbosida.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#08080b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="landing-body">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="landing-hero" aria-labelledby="landing-title">
+      <div class="landing-collage" aria-hidden="true">
+        <div class="collage-item"><img src="assets/backdrops/nur.webp" alt="" loading="eager"></div>
+        <div class="collage-item"><img src="assets/posters/oxirgi-reys.webp" alt="" loading="eager"></div>
+        <div class="collage-item"><img src="assets/backdrops/kosmos-2049.webp" alt="" loading="eager"></div>
+        <div class="collage-item"><img src="assets/posters/shahar-chiroqlari.webp" alt="" loading="lazy"></div>
+        <div class="collage-item"><img src="assets/posters/chol-siri.webp" alt="" loading="lazy"></div>
+        <div class="collage-item"><img src="assets/backdrops/oxirgi-reys.webp" alt="" loading="lazy"></div>
+        <div class="collage-item"><img src="assets/posters/ovozsiz.webp" alt="" loading="lazy"></div>
+      </div>
+
+      <div class="landing-hero__inner">
+        <span class="landing-eyebrow">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c.6 4.9 2.2 6.9 6.9 7.5-4.7.6-6.3 2.6-6.9 7.5-.6-4.9-2.2-6.9-6.9-7.5 4.7-.6 6.3-2.6 6.9-7.5Z"/></svg></span>
+          <span data-i18n="landing_eyebrow">O'zbekcha streaming platforma</span>
+        </span>
+        <h1 class="landing-title" id="landing-title" data-i18n="landing_title">Cheksiz kinolar. Bir joyda.</h1>
+        <p class="landing-sub" data-i18n="landing_sub">Filmlar, seriallar va yangi premyeralar — lotin hamda kirill alifbosida. Sevimlilaringizni saqlang, qulay qurilmada tomosha qiling.</p>
+        <div class="landing-actions">
+          <a class="btn btn--red" href="browse.html">
+            <span data-i18n="landing_cta">Katalogni ko'rish</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <button class="btn btn--outline" type="button" id="landing-auth">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 4.2 2.9 11.4c-.9.3-.9.9-.1 1.1l4.8 1.5 1.8 5.6c.2.6.4.8 1 .8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.4c.3-1.2-.4-1.8-1.5-1.8ZM8.6 13.9l9.1-5.7c.4-.3.8-.1.5.2l-7.5 6.8-.3 3.1-1.8-4.4Z"/></svg></span>
+            <span data-i18n="landing_secondary">Telegram orqali kirish</span>
+          </button>
+        </div>
+        <p class="landing-note" data-i18n="landing_note">Ro'yxatdan o'tish shart emas. Hisob Telegram ID'ingizga xavfsiz bog'lanadi.</p>
+      </div>
+
+      <a class="landing-scroll" href="#landing-preview">
+        <span data-i18n="preview_title">Katalogdan</span>
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </a>
+    </section>
+
+    <section class="landing-section landing-section--tight" id="landing-preview">
+      <div class="landing-section__head">
+        <div>
+          <p class="section-heading__eyebrow" data-i18n="hero_pick">KINORA TANLOVI</p>
+          <h2 class="landing-section__title" data-i18n="preview_title">Katalogdan</h2>
+          <p class="landing-section__sub" data-i18n="footer_notice">Demo yozuvlar va litsenziya izohlari har bir kontent sahifasida ko'rsatiladi.</p>
+        </div>
+        <a class="shelf__more" href="browse.html">
+          <span data-i18n="view_all">Hammasini ko'rish</span>
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+      <div id="landing-featured" class="landing-preview-grid" aria-live="polite"></div>
+      <div class="demo-strip">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></span>
+        <span data-i18n="demo_notice">Belgilangan yozuvlar demo ma'lumotlardir. Posterlar original generatsiya qilingan vizuallar, video va treylerlar esa faqat litsenziyalangan manbalardan qo'shiladi.</span>
+      </div>
+    </section>
+
+    <div class="landing-section" id="landing-ad-wrap" hidden>
+      <div id="landing-ad"></div>
+    </div>
+
+    <section class="landing-section">
+      <div class="landing-section__head">
+        <div>
+          <p class="section-heading__eyebrow">KINORA</p>
+          <h2 class="landing-section__title" data-i18n="features_title">Nega Kinora?</h2>
+          <p class="landing-section__sub" data-i18n="footer_about">Kinora — O'zbekiston tomoshabinlari uchun qulay film va seriallar katalogi. Faqat ruxsat etilgan kontent joylashtiriladi.</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span>
+          <h3 class="feature-card__title" data-i18n="feature_catalog_title">Tanlangan katalog</h3>
+          <p class="feature-card__text" data-i18n="feature_catalog_text">Filmlar, seriallar va qismlar bir joyda. Har bir yozuv admin panelda tekshiriladi va chop etiladi.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 6h8M8 4v2c0 4-2 7-5 8M6 10c1 3 3 5 6 6"/><path d="m14 20 4-10 4 10M15.5 16h5"/></svg></span>
+          <h3 class="feature-card__title" data-i18n="feature_lang_title">Ikki alifbo</h3>
+          <p class="feature-card__text" data-i18n="feature_lang_text">Butun interfeys lotin va kirill alifbosida. Kontent sarlavhalari ham imkon qadar ikkala ko'rinishda beriladi.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3 class="feature-card__title" data-i18n="feature_security_title">Xavfsiz kirish</h3>
+          <p class="feature-card__text" data-i18n="feature_security_text">Telegram initData imzosi serverda tekshiriladi. Admin amallari faqat ruxsat etilgan hisoblar uchun.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="landing-section">
+      <div class="landing-section__head">
+        <div>
+          <p class="section-heading__eyebrow">FAQ</p>
+          <h2 class="landing-section__title" data-i18n="faq_title">Ko'p so'raladigan savollar</h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details class="faq__item" open>
+          <summary data-i18n="faq_q1">Kinora'da hisob ochish pullikmi?</summary>
+          <p data-i18n="faq_a1">Yo'q. Hisob Telegram orqali ochiladi. Katalogning ochiq qismini hisobsiz ham ko'rish mumkin, sevimlilar va profil uchun Telegram tasdiqlashi kerak.</p>
+        </details>
+        <details class="faq__item">
+          <summary data-i18n="faq_q2">Videolar qayerdan olinadi?</summary>
+          <p data-i18n="faq_a2">Platforma faqat egasi tarqatish huquqiga ega bo'lgan kontentni qabul qiladi. Demo yozuvlarda video yo'q; admin panel orqali litsenziyalangan havola yoki Telegram fayli biriktiriladi.</p>
+        </details>
+        <details class="faq__item">
+          <summary data-i18n="faq_q3">VIP qanday ishlaydi?</summary>
+          <p data-i18n="faq_a3">VIP admin panelda yoqiladi yoki o'chiriladi. To'lov provayderi ulanguncha xarid tugmasi faol bo'lmaydi; VIP faqat tasdiqlangan to'lovdan yoki adminning auditlangan qo'lda berishidan keyin faollashadi.</p>
+        </details>
+        <details class="faq__item">
+          <summary data-i18n="faq_q4">Kinora Telegram Mini App'mi?</summary>
+          <p data-i18n="faq_a4">Ha. @KinoraTV_bot orqali Mini App ochiladi. Brauzerda ham katalogni ko'rish mumkin, lekin profil va sevimlilar Telegram hisobiga bog'langan.</p>
+        </details>
+      </div>
+
+      <div class="landing-cta">
+        <div>
+          <h2 data-i18n="landing_title">Cheksiz kinolar. Bir joyda.</h2>
+          <p data-i18n="footer_about">Kinora — O'zbekiston tomoshabinlari uchun qulay film va seriallar katalogi. Faqat ruxsat etilgan kontent joylashtiriladi.</p>
+        </div>
+        <div class="landing-cta__actions">
+          <a class="btn btn--red" href="browse.html" data-i18n="landing_cta">Katalogni ko'rish</a>
+          <a class="btn btn--outline" href="vip.html" data-i18n="nav_vip">VIP</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script type="module" src="landing.js"></script>
+</body>
+</html>

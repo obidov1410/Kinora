@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="uz-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KINORA — Profil</title>
+  <meta name="description" content="Kinora profili: Telegram hisobi, sevimlilar, til va VIP holati.">
+  <meta name="theme-color" content="#08080b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="profile-page">
+  <div id="site-header"></div>
+
+  <main class="page-main">
+    <header class="page-hero browse-content">
+      <p class="page-hero__eyebrow">KINORA ID</p>
+      <h1 class="page-hero__title" data-i18n="profile_title">Profil</h1>
+      <p class="page-hero__sub" data-i18n="profile_sub">Telegram hisobingiz va Kinora statistikasi.</p>
+    </header>
+    <div class="page-section">
+      <div id="profile-content" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script type="module" src="profile.js"></script>
+</body>
+</html>

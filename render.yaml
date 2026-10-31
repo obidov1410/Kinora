@@ -1,0 +1,64 @@
+services:
+  - type: web
+    name: kinora-api
+    runtime: python
+    plan: starter
+    region: frankfurt
+    branch: main
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: BOT_TOKEN
+        sync: false
+      - key: BOT_USERNAME
+        value: KinoraTV_bot
+      - key: OWNER_ID
+        value: "7041471070"
+      - key: DATABASE_URL
+        value: sqlite:////var/data/kinora.db
+      - key: DATA_DIR
+        value: /var/data
+      - key: UPLOADS_DIR
+        value: /var/data/uploads
+      - key: BACKUPS_DIR
+        value: /var/data/backups
+      - key: CORS_ORIGINS
+        value: https://obidov1410.github.io
+      - key: FRONTEND_URL
+        value: https://obidov1410.github.io/Kinora/
+      - key: ALLOW_DEV_LOGIN
+        value: "false"
+      - key: RATE_LIMIT_ENABLED
+        value: "true"
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "120"
+      - key: SESSION_TTL_HOURS
+        value: "168"
+      - key: TELEGRAM_AUTH_MAX_AGE
+        value: "86400"
+      - key: MEDIA_TOKEN_TTL_HOURS
+        value: "6"
+      - key: MAX_UPLOAD_MB
+        value: "8"
+      - key: BACKUP_INTERVAL_HOURS
+        value: "0"
+      - key: BACKUP_RETENTION
+        value: "10"
+      - key: SEED_DEMO
+        value: "true"
+      - key: PAYMENT_PROVIDER
+        value: none
+      - key: PAYMENT_WEBHOOK_SECRET
+        sync: false
+    disk:
+      name: kinora-data
+      mountPath: /var/data
+      sizeGB: 1

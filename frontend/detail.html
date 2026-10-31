@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="uz-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KINORA — Kontent</title>
+  <meta name="description" content="Kinora katalogidagi film yoki serial haqida ma'lumot, treyler, mavsumlar va qismlar.">
+  <meta name="theme-color" content="#08080b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="detail-page">
+  <div id="site-header"></div>
+
+  <main class="page-main" id="detail-main">
+    <div class="browse-content" style="padding-top: 40px;" id="detail-loading">
+      <div class="state-block">
+        <div class="spinner" role="status" aria-label="Yuklanmoqda"></div>
+        <p class="state-block__title" data-i18n="loading">Yuklanmoqda...</p>
+      </div>
+    </div>
+    <div id="detail-root" hidden></div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script type="module" src="detail.js"></script>
+</body>
+</html>
