@@ -15,6 +15,11 @@ def test_health(client):
     assert TEST_BOT_TOKEN not in str(data)
 
 
+def test_health_head(client):
+    response = client.head("/api/health")
+    assert response.status_code == 200
+
+
 def test_telegram_init_data_validation_accepts_valid_signature():
     user = validate_telegram_init_data(make_init_data(1234567))
     assert user["id"] == 1234567

@@ -108,7 +108,7 @@ async def validation_error_handler(request: Request, exc: RequestValidationError
     )
 
 
-@app.get("/api/health", tags=["health"])
+@app.api_route("/api/health", methods=["GET", "HEAD"], tags=["health"])
 def health():
     database_ok = True
     try:
